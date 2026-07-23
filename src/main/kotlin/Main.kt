@@ -26,4 +26,12 @@ fun main() {
     val targetId = 40
     val foundIndex = binarySearchById(trackingIds, targetId)
     println("Result Index: $foundIndex")
+
+    println("\n*****************************************")
+    println("\n=== Parse Container Structure ===")
+    val sortedIds = intArrayOf(101, 202, 303, 404, 505)
+    val targetId2 = 303
+
+    val resultIndex = binarySearchById(sortedIds, targetId2)
+    println("Result index: $resultIndex")
 }
