@@ -26,3 +26,14 @@ private fun extractInnerContent(segment: String, startIndex: Int): String {
     if (depth != 0) throw StructuralMismatchException()
     return sb.toString()
 }
+
+private fun findClosingBracket(segment: String, startIndex: Int): Int {
+    var depth = 0
+    for (i in startIndex until segment.length) {
+        if (segment[i] == '[') depth++
+        else if (segment[i] == ']') {
+            if (depth == 0) return i + 1 else depth--
+        }
+    }
+    throw StructuralMismatchException()
+}
