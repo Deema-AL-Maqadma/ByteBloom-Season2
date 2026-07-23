@@ -41,3 +41,19 @@ fun findHighestValidWeight(weights: DoubleArray): Double {
 
     return highestWeight
 }
+
+fun isTransitCodePalindrome(code: String): Boolean {
+    val normalizedCode = code.lowercase()
+    var leftIndex = 0
+    var rightIndex = normalizedCode.length - 1
+
+    while (leftIndex < rightIndex) {
+        if (normalizedCode[leftIndex] != normalizedCode[rightIndex]) {
+            return false
+        }
+        leftIndex++
+        rightIndex--
+    }
+
+    return true
+}
