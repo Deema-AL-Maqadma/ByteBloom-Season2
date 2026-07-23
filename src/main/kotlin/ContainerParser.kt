@@ -12,3 +12,17 @@ private fun collectToken(segment: String, startIndex: Int): String {
     }
     return sb.toString()
 }
+
+private fun extractInnerContent(segment: String, startIndex: Int): String {
+    val sb = StringBuilder()
+    var i = startIndex
+    var depth = 1
+    while (i < segment.length && depth > 0) {
+        val ch = segment[i]
+        if (ch == '[') depth++ else if (ch == ']') depth--
+        if (depth > 0) sb.append(ch)
+        i++
+    }
+    if (depth != 0) throw StructuralMismatchException()
+    return sb.toString()
+}
