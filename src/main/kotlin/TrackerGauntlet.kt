@@ -58,6 +58,14 @@ fun isTransitCodePalindrome(code: String): Boolean {
     return true
 }
 
+private fun printSearchResult(stepCounter: Int, resultIndex: Int) {
+    if (resultIndex != -1) {
+        println("Search finished in $stepCounter steps. Found at index $resultIndex.")
+    } else {
+        println("Search finished in $stepCounter steps. Target not found.")
+    }
+}
+
 fun binarySearchById(sortedIds: IntArray, targetId: Int): Int {
     var leftBoundary = 0
     var rightBoundary = sortedIds.size - 1
@@ -78,11 +86,6 @@ fun binarySearchById(sortedIds: IntArray, targetId: Int): Int {
         }
     }
 
-    if (resultIndex != -1) {
-        println("Search finished in $stepCounter steps. Found at index $resultIndex.")
-    } else {
-        println("Search finished in $stepCounter steps. Target not found.")
-    }
-
+    printSearchResult(stepCounter, resultIndex)
     return resultIndex
 }
