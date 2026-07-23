@@ -37,3 +37,28 @@ private fun findClosingBracket(segment: String, startIndex: Int): Int {
     }
     throw StructuralMismatchException()
 }
+
+private fun parseRecursive(segment: String): List<String> {
+    val results = mutableListOf<String>()
+    var i = 0
+    val length = segment.length
+    while (i < length) {
+        val ch = segment[i]
+        when {
+            ch.isWhitespace() -> i++
+            ch == '[' -> {
+                val inner = extractInnerContent(segment, i + 1)
+                results.addAll(parseRecursive(inner))
+                i = findClosingBracket(segment, i)
+            }
+            ch == ']' -> return results
+            ch == ',' -> i++
+            else -> {
+                val token = collectToken(segment, i)
+                if (isPackageId(token)) results.add(cleanToken(token))
+                i += token.length
+            }
+        }
+    }
+    return results
+}
