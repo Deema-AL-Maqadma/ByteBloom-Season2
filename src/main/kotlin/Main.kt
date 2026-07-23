@@ -29,9 +29,7 @@ fun main() {
 
     println("\n*****************************************")
     println("\n=== Parse Container Structure ===")
-    val sortedIds = intArrayOf(101, 202, 303, 404, 505)
-    val targetId2 = 303
-
-    val resultIndex = binarySearchById(sortedIds, targetId2)
-    println("Result index: $resultIndex")
+    val input = "Crate[Box[PKG-101, PKG-202], PKG-303]"
+    val parsedIds = parseContainerStructure(input)
+    println("Parsed IDs: $parsedIds")
 }
