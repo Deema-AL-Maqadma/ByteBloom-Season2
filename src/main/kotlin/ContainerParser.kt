@@ -62,3 +62,9 @@ private fun parseRecursive(segment: String): List<String> {
     }
     return results
 }
+
+fun parseContainerStructure(input: String): List<String> {
+    val cleanedInput = input.trim()
+    if (cleanedInput.isEmpty()) return emptyList()
+    return parseRecursive(cleanedInput)
+}
