@@ -47,10 +47,9 @@ private fun parseRecursive(segment: String): List<String> {
         when {
             ch.isWhitespace() -> i++
             ch == '[' -> {
-                val closingIndex = findClosingBracket(segment, i + 1)
-                val inner = segment.substring(i + 1, closingIndex - 1)
+                val inner = extractInnerContent(segment, i + 1)
                 results.addAll(parseRecursive(inner))
-                i = closingIndex
+                i = findClosingBracket(segment, i + 1)
             }
             ch == ']' -> return results
             ch == ',' -> i++
