@@ -15,3 +15,17 @@ fun generatePriorityDispatchReport(): List<String> {
 
     return dispatchResults
 }
+
+fun reverseRouteWaypoints(route: String): String {
+    val waypoints = route.split(" -> ")
+    val reversedRoute = StringBuilder()
+
+    for (index in waypoints.size - 1 downTo 0) {
+        reversedRoute.append(waypoints[index])
+        if (index != 0) {
+            reversedRoute.append(" -> ")
+        }
+    }
+
+    return reversedRoute.toString()
+}
