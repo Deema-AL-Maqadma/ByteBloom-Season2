@@ -68,3 +68,23 @@ fun parseContainerStructure(input: String): List<String> {
     if (cleanedInput.isEmpty()) return emptyList()
     return parseRecursive(cleanedInput)
 }
+
+/*
+ Recursion Execution Flow in JVM:
+
+ 1. Each time the recursive function is called, the JVM creates a new stack frame.
+ 2. This stack frame stores:
+    - Local variables specific to that call
+    - The current execution state (instruction pointer)
+    - References to parameters passed into the function
+ 3. The program then executes inside this frame until:
+    - It either makes another recursive call (creating a deeper frame)
+    - Or reaches a base case and returns a value
+ 4. When the function returns, the JVM destroys that stack frame:
+    - Memory allocated for local variables is released
+    - Control is passed back to the previous frame
+ 5. This process continues until all recursive calls have returned,
+    unwinding the stack back to the original caller.
+ 6. Proper base cases are critical, because without them the stack
+    keeps growing and eventually causes a StackOverflowError.
+*/
