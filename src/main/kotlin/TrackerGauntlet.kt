@@ -57,3 +57,32 @@ fun isTransitCodePalindrome(code: String): Boolean {
 
     return true
 }
+
+fun binarySearchById(sortedIds: IntArray, targetId: Int): Int {
+    var leftBoundary = 0
+    var rightBoundary = sortedIds.size - 1
+    var stepCounter = 0
+    var resultIndex = -1
+
+    while (leftBoundary <= rightBoundary) {
+        stepCounter++
+        val middleIndex = (leftBoundary + rightBoundary) / 2
+
+        if (sortedIds[middleIndex] == targetId) {
+            resultIndex = middleIndex
+            break
+        } else if (sortedIds[middleIndex] < targetId) {
+            leftBoundary = middleIndex + 1
+        } else {
+            rightBoundary = middleIndex - 1
+        }
+    }
+
+    if (resultIndex != -1) {
+        println("Search finished in $stepCounter steps. Found at index $resultIndex.")
+    } else {
+        println("Search finished in $stepCounter steps. Target not found.")
+    }
+
+    return resultIndex
+}
