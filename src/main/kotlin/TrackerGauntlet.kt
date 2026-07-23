@@ -29,3 +29,15 @@ fun reverseRouteWaypoints(route: String): String {
 
     return reversedRoute.toString()
 }
+
+fun findHighestValidWeight(weights: DoubleArray): Double {
+    var highestWeight = Double.MIN_VALUE
+
+    for (currentWeight in weights) {
+        if (currentWeight != -1.0 && currentWeight > highestWeight) {
+            highestWeight = currentWeight
+        }
+    }
+
+    return highestWeight
+}
